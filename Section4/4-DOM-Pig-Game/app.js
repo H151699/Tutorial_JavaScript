@@ -11,7 +11,7 @@ GAME RULES:
 
 
 
-var scores, roundScore, activePlayer, dice;
+var scores, roundScore, activePlayer;
 
 scores = [0, 0];
 roundScore = 0;
@@ -20,15 +20,94 @@ activePlayer = 1;
 
 /* dice */
 /* Math.floor() : to delete the decimal */
-dice = Math.floor(Math.random() * 6) + 1; // integer 1 + 5 + 1 = 6
+// dice = Math.floor(Math.random() * 6) + 1; // integer 1 + 5 + 1 = 6
 //Test: console.log(dice);
 
 // write "dice value" to the current-0 or current-1 section
-document.querySelector('#current-' + activePlayer).textContent = dice; // .textContent can nonly set plain text, no HTML
+// document.querySelector('#current-' + activePlayer).textContent = dice; // .textContent can nonly set plain text, no HTML
 // document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>'; // <em> : make  it italic
 
-var x = document.querySelector('#score-0').textContent; // read valueOf score-0 and store in  var x.
+// var x = document.querySelector('#score-0').textContent; // read valueOf score-0 and store in  var x.
 // console.log(x);
 
+
+// Hide the dies*****************************************************************************
 //change the display property and  set the dice to null
 document.querySelector('.dice').style.display = 'none'; // make dice image none in the beginning
+
+// Set default values in the ID boxs
+document.getElementById('score-0').textContent = '0';
+document.getElementById('score-1').textContent = '0';
+
+document.getElementById('current-0').textContent = '0';
+document.getElementById('current-0').textContent = '0';
+
+
+
+/*
+function btn(){
+
+}
+btn();
+
+// select sth , using querySelector //reference   https://developer.mozilla.org/en-US/docs/web/events
+document.querySelector('.btn-roll').addEventListener('click', btn);
+*/
+
+/* //  ROLL DICE function using Anonymous function */
+// fucntion with no name, which can only here
+document.querySelector('.btn-roll').addEventListener('click', function(){
+
+    // 1, Random number
+    var dice = Math.floor(Math.random() * 6 ) + 1;
+
+    //2, Display the result of dies
+
+    // Create a var to store result and display it when needed.
+    var diceDOM =  document.querySelector('.dice');
+    diceDOM.style.display = 'block';
+
+    // change imag accordint to diesNumber
+    diceDOM.src = 'dice-' + dice + '.png';
+
+  // 3, update the round score IF the rolled number was NOT  a ONE 1.
+
+}); //  ROLL DICE function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//

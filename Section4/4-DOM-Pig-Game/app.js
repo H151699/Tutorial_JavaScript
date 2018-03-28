@@ -8,3 +8,27 @@ GAME RULES:
 - The first player to reach 100 points on GLOBAL score wins the game
 
 */
+
+
+
+var scores, roundScore, activePlayer, dice;
+
+scores = [0, 0];
+roundScore = 0;
+activePlayer = 1;
+
+
+/* dice */
+/* Math.floor() : to delete the decimal */
+dice = Math.floor(Math.random() * 6) + 1; // integer 1 + 5 + 1 = 6
+//Test: console.log(dice);
+
+// write "dice value" to the current-0 or current-1 section
+document.querySelector('#current-' + activePlayer).textContent = dice; // .textContent can nonly set plain text, no HTML
+// document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>'; // <em> : make  it italic
+
+var x = document.querySelector('#score-0').textContent; // read valueOf score-0 and store in  var x.
+// console.log(x);
+
+//change the display property and  set the dice to null
+document.querySelector('.dice').style.display = 'none'; // make dice image none in the beginning

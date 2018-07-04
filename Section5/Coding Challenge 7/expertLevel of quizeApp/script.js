@@ -50,15 +50,26 @@ Question.prototype.displayQuestion = function() {
 
 
 // check user's input answer.
-Question.prototype.checkAnswer = function(ans){
+Question.prototype.checkAnswer = function(ans, callback){
+  var sc;
   if(ans === this.correct){
     console.log('Correct Answer hurra!');
+
+    sc = callback(true);
+
   }else{
+
     console.log('Wrong answer, try again!');
+    sc = callback(false);
   }
+
+  this.displayScore(sc);
 }
 
-
+Question.prototype.displayScore = function(score){
+    console.log('Your current score is:' + score);
+    console.log('-----------------------------------------');
+}
 
 
 // 2. create a couple of questions using the constructor
@@ -82,9 +93,26 @@ var q3 = new Question('What does best decribe coding',
 
 var questionsArr = [q1, q2, q3]; // 3. store them all inside an array
 
+// add score Function
+function score() {
+  var sc = 0;
+  return function(correct){ // if the answer is correct, then return it
+    if(correct){
+      sc++;
+    }
+    return sc;
+  }
+}
+
+// call score Function
+var keepScore = score();
+
+
+
+
+
+
 function nextQuestion(){
-
-
 
 var n = Math.floor(Math.random()*questionsArr.length);
 
@@ -95,7 +123,7 @@ var answer = prompt('Please select the correct answer.');
 
 if(answer !== 'exit'){
 
-  questionsArr[n].checkAnswer(parseInt(answer));
+  questionsArr[n].checkAnswer(parseInt(answer), keepScore); // pass keepScore
   nextQuestion();
 
 }
